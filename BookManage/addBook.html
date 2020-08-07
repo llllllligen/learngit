@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/subPage.css">
+
+</head>
+<body>
+    <div class="subTop">
+        <h1>增加新书</h1>
+    </div>
+
+    <form class="addBookWrap" action="" method="post">
+        <p><span>书名<i></i></span>：<input type="text" name="" class="addName"></p>
+        <p><span>作者<i></i></span>：<input type="text" name="" class="addAuthor></p>
+        <p><span>出版社<i></i></span>：<input type="text" name="" class="addPress"></p>
+        <p><span>I S B N<i></i></span>：<input type="text" name="" class="addISBN"></p>
+        
+
+
+
+    </form>
+
+    <div class="addBtnWrap">
+        <input class="addBtn" type="button" value="➕ 添加">
+    </div>
+    
+<script src="./JS/utils.js"></script>
+<script>
+var addName = document.querySelector('.addName');
+var addAuthor = document.querySelector('.addAuthor');
+var addPress = document.querySelector('.addPress');
+var addISBN = document.querySelector('.addISBN');
+var addBtn = document.querySelector('.addBtn');
+
+addBtn.onclick = function(){
+    ajax({
+        url: './getData.php',
+        type: 'post',
+        data: '',
+        dataType: 'json',
+        success: function (data) {
+            var json = JSON.parse(data);
+            for (var i = 0; i < json.length; i++) {
+                var inDate = new Date(Number(json[i].time)).toLocaleString();
+                var trs = document.createElement('tr');
+                trs.innerHTML = `
+                    <td>${json[i].title}</td>
+                    <td>${json[i].author}</td>
+                    <td>${json[i].press}</td>
+                    <td>${json[i].isbn}</td>
+                    <td>${inDate}</td>`;
+                table.appendChild(trs);
+                stat.innerHTML = `显示第 1-${i+1} 条记录，共 ${i+1} 条记录`
+            }
+        },
+        error: function (status) {
+            alert(status);
+        }
+    });
+}
+</script>
+</body>
+</html>

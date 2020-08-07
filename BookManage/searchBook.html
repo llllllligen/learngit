@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/subPage.css">
+
+</head>
+<body>
+    <div class="subTop">
+        <h1>查询图书</h1>
+    </div>
+    <div class="searchBtnWrap">
+        <input class="searchAll" type="button" value="🔍 查询">
+    </div>
+    <div class="form">
+        <table>
+            <thead>
+                <tr>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>出版社</th>
+                    <th>ISBN</th>
+                    <th>入库时间</th>
+                </tr>
+            </thead>
+            <tbody class="table">
+            </tbody>
+            
+        </table>
+
+    </div>
+    <div class="pageTools">
+        <div class="stat">
+            <span>显示第 0 条记录，共 0 条记录</span>
+        </div>
+        <div class="pageCtrl">
+            <ul class="pagePrev">
+                <li>&lt;&lt;</li>
+                <li>&lt;</li>
+            </ul>
+            <ul class="pageNum">
+                <li>1</li>
+                <li>2</li>
+            </ul>
+            <ul class="pageNext">
+                <li>&gt;</li>
+                <li>&gt;&gt;</li>
+            </ul>
+        </div>
+    </div>
+<script src="./JS/utils.js"></script>
+<script>
+var table = document.querySelector('.table');
+var searchAll = document.querySelector('.searchAll');
+var stat = document.querySelector('.stat span');
+
+
+searchAll.onclick = function(){
+    table.innerHTML = '';
+
+    ajax({
+        url: './getData.php',
+        type: 'post',
+        data: {
+            "type":"searchAll"
+        },
+        dataType: 'json',
+        success: function (data) {
+            var json = JSON.parse(data);
+            for (var i = 0; i < json.length; i++) {
+                var inDate = new Date(Number(json[i].time)).toLocaleString();
+                var trs = document.createElement('tr');
+                trs.innerHTML = `
+                    <td>${json[i].title}</td>
+                    <td>${json[i].author}</td>
+                    <td>${json[i].press}</td>
+                    <td>${json[i].isbn}</td>
+                    <td>${inDate}</td>`;
+                table.appendChild(trs);
+                stat.innerHTML = `显示第 1-${i+1} 条记录，共 ${i+1} 条记录`
+            }
+        },
+        error: function (status) {
+            alert(status);
+        }
+    });
+}
+
+
+
+</script>
+</body>
+</html>

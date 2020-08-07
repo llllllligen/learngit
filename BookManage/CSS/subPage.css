@@ -1,0 +1,117 @@
+html, body,h1,h2,h3,h4,h5,h6,ul,li,p,.top{margin: 0; padding: 0;}
+body{height: calc(100%-20px);background-color: #fff;}
+html{height: 100%;}
+li{list-style: none;}
+/* search */
+.subTop, .searchBtnWrap, .form, .pageTools, .addBtnWrap, form{width: calc(100% - 80px); margin:10px auto;}
+.subTop{
+    height: 80px;
+    width: calc(100% - 80px);
+    line-height:80px;
+    border-bottom: 1px solid #84a98c;
+    text-indent: 25px;
+    color: #354F52;
+}
+.searchAll{
+    width: 90px;
+    height: 32px;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: #fff;
+    background: #00CC66;
+    /* border: 1px solid #ccc; */
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
+}
+.searchAll:focus{outline:none;}
+
+table,th,td{border: 1px solid #ccc; color: #444;}
+table{border-collapse:collapse; width:100%;}
+td{padding:10px;text-align:center}
+tbody tr:nth-child(2n){background: #eee;}
+
+
+.stat{
+    width:300px;
+    /* background-color: #f00; */
+    float: left;
+}
+
+
+.pageTools{
+    overflow: hidden;
+}
+.pageCtrl{
+    float: right;
+    /* background-color: #0f0; */
+}
+.pageCtrl ul{
+    float: left;
+
+}
+.pageCtrl li{
+    width:25px;
+    height: 25px;
+    line-height: 25px;
+    font-size:12px;
+    text-align: center;
+    color: #666;
+    border: 1px solid #ccc;
+    border-right: none;
+    float: left;
+    cursor: pointer;
+}
+.pageNum li{
+    font-size:14px;
+}
+.pageCtrl li:hover{
+    background-color: #DDD;
+}
+.pagePrev li:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+.pageNext li:nth-child(2) {
+    border-right: 1px solid #ccc;
+    border-radius:0 5px 5px 0;
+}
+/* search */
+
+/* add */
+
+
+.addBtn{
+    width: 90px;
+    height: 32px;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: #fff;
+    background: #00CC66;
+    /* border: 1px solid #ccc; */
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+.addBookWrap p{
+    display: inline-block;
+    width:100%;
+    color: #666;
+    margin: 10px auto;
+    text-align: center;
+}
+.addBookWrap span {
+    display: inline-block;
+    width:60px;
+    text-align: justify;
+    text-align-last: justify;
+}
+.addBookWrap input {
+    height: 20px;
+    border: 1px solid #999;
+    color: #ccc;
+    outline: none;
+} 
+/* add */
